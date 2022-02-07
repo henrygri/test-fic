@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { SelectableGroup } from "react-selectable-fast";
+import ItemGroup from "./components/ItemGroup";
 
 function App() {
+
+  const [data, setData] = useState([]);
+  const [selected, setSelected] = useState([]);
+
+  const getData = async () => {
+      await fetch('http://staccah.fattureincloud.it/testfrontend/data.json')
+            .then((res) => res.json())
+            .then((data) => {
+              setData(data.mesi);
+          });
+  }
+
+  const handleSelectionFinish = (obj) => {
+    setSelected(obj);
+    //console.log(obj);
+  }
+
+  
+  useEffect(() => {
+    getData();
+  }, [setData]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SelectableGroup
+            className="main"
+            clickClassName="tick"
+            enableDeselect
+            onSelectionFinish={handleSelectionFinish}
+          >
+          <ItemGroup items={data} />
+      </SelectableGroup>
+        <div className="selected_box">
+          <h2>Mesi selezionati</h2>
+          {selected && selected.map((item, i) => (
+            <p key={i}>{item.props.months}</p>
+          ))}
+        </div>
     </div>
   );
 }

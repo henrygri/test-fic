@@ -1,13 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  margin-top: 50px;
+}
+
+.list__group {
+  display: flex;
+  width: 973px;
+  margin: auto;
+  border: 1px solid #EBEDEE;
+  border-bottom: none;
+}
+
+.selected_box {
+  width: 973px;
+  margin: 50px auto 0;
+}
+
+.selected_box p {
+  background-color: #0D97D5;
+  color: #fff;
+  padding: 7px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list__item {
+  width: 8.3%;
+  height: 110px;
+  border-right: 1px solid #EBEDEE;
+  position: relative;
+}
+
+.list__item:last-child {
+  border-right: none;
+}
+
+.list__item:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  background: transparent;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  transition: 0.2s;
+}
+
+.list__item.selecting:after {
+  background: rgb(13 151 213 / 50%);;
+}
+
+.list__item.selected:after {
+  background: rgb(13 151 213 / 100%);;
+}
+
+.list__item_header {
+  color: #0D97D5;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  padding: 8px;
+  border-bottom: 1px solid #EBEDEE;
+}
+
+.list__item_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: calc(100% - 40px);
+  padding: 8px;
+  position: relative;
+}
+
+.list__item__content_details {
+  position: relative;
+}
+
+.list__item_content .list__item__content_details p {
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.list__item_content .list__item__content_details p:first-child {  
+  color:#6F7E86;
+}
+
+.list__item_content .list__item__content_details p:last-child {  
+  color:#00875A;
+}
+
+.list__item_perc {
+  position: absolute;
+  background: #E0F1EB;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.red {
+  background-color: rgba(255, 127, 174, 0.629);
+}
+
+.orange {
+  border: 3px solid rgba(236, 7, 7, 0.629);
+}
+.yellow {
+  border: 1px solid rgba(221, 236, 7, 0.629);
+}
+
+.blue {
 }
