@@ -16,8 +16,7 @@ function App() {
   }
 
   const handleSelectionFinish = (obj) => {
-    setSelected(obj);
-    //console.log(obj);
+    setSelected(obj)
   }
 
   
